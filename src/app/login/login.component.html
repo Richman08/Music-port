@@ -1,0 +1,11 @@
+<mat-card class="login-form-container">
+  <form (submit)="loginUser($event)">
+    <mat-form-field class="input-field">
+      <input matInput type="text" placeholder="E-mail" id="username">
+    </mat-form-field>
+    <mat-form-field class="input-field">
+      <input matInput type="password" placeholder="Password" id="password">
+    </mat-form-field>
+    <button mat-raised-button type="submit" value="Submit" class="submit-btn">Log in</button>
+  </form> 
+</mat-card>
