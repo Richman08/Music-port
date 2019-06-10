@@ -1,26 +1,16 @@
- 
-<div class="wraper">
-  <form [formGroup]="userProfile" class="user-profile-container">
-    <mat-form-field class="input-field">
-      <input matInput  placeholder="Enter your first name" formControlName='firstName'>
-    </mat-form-field>
-    <mat-form-field class="input-field">
-      <input matInput placeholder="Enter your last name" formControlName='lastName'>
-    </mat-form-field>
-    <mat-form-field class="input-field">
-      <input matInput  placeholder="Type to search country" formControlName='countryName'>
-    </mat-form-field>
-    <mat-form-field class="input-field">
-      <input matInput  placeholder="Type to search city" formControlName='cityName'>
-    </mat-form-field>
-  </form>
-  <!-- google-place -->
-  
-  
-  <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-  </agm-map>
+<input type="text" [(ngModel)]='albumId'>
+<button mat-raised-button (click)="mainList.search()">Search track</button>
 
-<button mat-raised-button (click)="testClick()">Click me tender</button>
-  
-</div>
+<mat-list>
+    <mat-list-item  class="list-container">
+        <img src="" alt="Album-Cover">
+        <div class="song-description">
+            <p class="album-name">{{ response }}</p>
+            <p class="actor-name">{{ response }}</p>
+            <div class="play-track">
+                <button mat-raised-button>Play</button>
+                <span class="track-duration">3h</span>
+            </div>
+        </div>
+    </mat-list-item>
+</mat-list> 

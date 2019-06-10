@@ -1,0 +1,27 @@
+ 
+<div class="wraper">
+  <form [formGroup]="userProfile" class="user-profile-container">
+    <mat-form-field class="input-field">
+      <input matInput  placeholder="Enter your first name" formControlName='firstName'>
+    </mat-form-field>
+    <mat-form-field class="input-field">
+      <input matInput placeholder="Enter your last name" formControlName='lastName'>
+    </mat-form-field>
+    <mat-form-field class="input-field">
+      <input matInput  placeholder="Type to search country" formControlName='countryName'>
+    </mat-form-field>
+    <mat-form-field class="input-field">
+      <input matInput  placeholder="Type to search city" formControlName='cityName'>
+    </mat-form-field>
+  </form>
+  <!-- google-place -->
+  
+  
+  <!-- <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map> -->
+
+<button mat-raised-button (click)="testClick()">Click me tender</button>
+  
+</div>
+ 

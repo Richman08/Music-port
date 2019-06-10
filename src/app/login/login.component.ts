@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,12 @@ import { AuthService } from '../shared/services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private Auth: AuthService) { }
+  constructor(private gAuthService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  loginUser(event) {
-    
-    event.preventDefault();
-    console.log(event)
+  login() {
+    this.gAuthService.loginWithGoole();
   }
 }

@@ -13,8 +13,8 @@ interface Location {
 })
 export class MapsService {
 
-  constructor(private http: HttpClient) {}
-      getLocation(){
-        return this.http.get<Location>('https://ipapi.co/json/');
-      }
+  // constructor(private http: HttpClient) {}
+  //     getLocation(){
+  //       return this.http.get<Location>('https://ipapi.co/json/');
+  //     }
 }
