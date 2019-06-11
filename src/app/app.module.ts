@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { MainComponent } from './main/main.component';
-import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './header/header.component';
 import { FaqComponent } from './faq/faq.component';
 import { LoginComponent } from './login/login.component';
@@ -22,14 +21,13 @@ import { AgmCoreModule } from '@agm/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-import { AuthService } from './shared/services/auth/auth.service';
-import { AudioPlayerService } from './shared/services/audio-player/audio-player.service';
+import { AuthService } from './services/auth/auth.service';
+import { SearchDataService } from './services/search-data/search-data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    AuthComponent,
     HeaderComponent,
     FaqComponent,
     LoginComponent,
@@ -54,7 +52,7 @@ import { AudioPlayerService } from './shared/services/audio-player/audio-player.
   ],
   providers: [
     AuthService,
-    AudioPlayerService
+    SearchDataService
   ],
   bootstrap: [AppComponent]
 })

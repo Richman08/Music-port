@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { MainListService } from '../shared/services/main-list/main-list.service';
+import { SearchDataService } from '../services/search-data/search-data.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
@@ -10,16 +9,27 @@ import { MainListService } from '../shared/services/main-list/main-list.service'
 })
 export class MainComponent implements OnInit {
 
-  trackInfo: FormGroup;
-  albumId: string = '';
-  response: any;
+  searchForm = new FormGroup({
+    searchField: new FormControl()
+  });
+  response: Array<any>;
+  
+  constructor(private searchDataService: SearchDataService) {}
 
-  constructor(private http: HttpClient, private mainList: MainListService) {}
-
-  ngOnInit() {
+  ngOnInit() { 
    
   }
   
+  searchTrack(searchForm){
+    this.searchDataService.search(searchForm)
+    .subscribe(({results}: any) => {
+      this.response = results;
+      console.log(this.response);
+      console.log(this.searchForm.controls.searchField.value)
+    });
+    // this.searchForm.reset();
+  }
+
   
       
 

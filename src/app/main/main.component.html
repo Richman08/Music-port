@@ -1,16 +1,24 @@
-<input type="text" [(ngModel)]='albumId'>
-<button mat-raised-button (click)="mainList.search()">Search track</button>
-
-<mat-list>
-    <mat-list-item  class="list-container">
-        <img src="" alt="Album-Cover">
-        <div class="song-description">
-            <p class="album-name">{{ response }}</p>
-            <p class="actor-name">{{ response }}</p>
-            <div class="play-track">
-                <button mat-raised-button>Play</button>
-                <span class="track-duration">3h</span>
-            </div>
+<div class="wraper">
+    <form [formGroup]="searchForm" class="form-group">
+        <div class="search-container">
+            <mat-form-field class="search-input">
+                <input formControlName="searchField" matInput placeholder='Type to search...' type="search" (keyup.enter)="searchTrack('eminem')">
+                <mat-icon class="icon-search" (click)="searchTrack('eminem')">search</mat-icon>
+            </mat-form-field>
         </div>
-    </mat-list-item>
-</mat-list> 
+    </form>
+    <mat-list class="list-container">
+        <div class="track-block" *ngFor='let item of response'>
+            <div class="track-cover">
+                <img [src]="item.artworkUrl100" alt="Album-Cover">
+            </div>
+            <div class="track-description">
+                <p class="artist-name">{{ item.artistName }}</p>
+                <p class="track-name">"{{ item.trackName }}"</p>
+                <p class="track-duration"> {{ item.trackTimeMillis | date:'mm:ss'}} </p>
+            </div>
+            <div role='button' class="play-btn"><mat-icon >play_circle_outline</mat-icon></div>
+            <mat-divider></mat-divider>
+        </div>     
+    </mat-list> 
+</div>
