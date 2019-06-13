@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchDataService } from '../services/search-data/search-data.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { DataService } from '../services/data-service/data.service';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -8,28 +10,33 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./main.component.sass']
 })
 export class MainComponent implements OnInit {
-
-  searchForm = new FormGroup({
-    searchField: new FormControl()
-  });
-  response: Array<any>;
+  searchForm;
+  tracksArray: Array<any>;
   
-  constructor(private searchDataService: SearchDataService) {}
+  constructor(
+    public fb: FormBuilder,
+    private searchDataService: SearchDataService,
+    private dataService: DataService,
+    private gAuth: AuthService) {
+      this.searchForm = this.fb.group({
+        searchField: ['']
+      })
+  };
 
   ngOnInit() { 
-   
-  }
+  };
   
-  searchTrack(searchForm){
+  searchTrack(searchForm) {
     this.searchDataService.search(searchForm)
     .subscribe(({results}: any) => {
-      this.response = results;
-      console.log(this.response);
-      console.log(this.searchForm.controls.searchField.value)
+      this.tracksArray = results;
     });
-    // this.searchForm.reset();
-  }
+    this.searchForm.reset();
+  } 
 
+  playTrack(index: number) {
+      this.dataService.setTrackUrl(this.tracksArray[index].previewUrl);
+  }
   
       
 

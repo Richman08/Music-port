@@ -16,5 +16,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.gAuthService.loginWithGoole();
+    // if() {
+        // this.router.navigate(['/main'])
+    // }
   }
 }
+ 

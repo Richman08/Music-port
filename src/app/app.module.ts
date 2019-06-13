@@ -10,6 +10,7 @@ import { GooglePlacesDirective } from './shared/directives/places/google-places.
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,9 +21,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule } from '@agm/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import 'hammerjs';
 
 import { AuthService } from './services/auth/auth.service';
 import { SearchDataService } from './services/search-data/search-data.service';
+import { DataService } from './services/data-service/data.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,8 @@ import { SearchDataService } from './services/search-data/search-data.service';
     FaqComponent,
     LoginComponent,
     GooglePlacesDirective,
-    UserProfileComponent
+    UserProfileComponent,
+    AudioPlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -46,13 +52,16 @@ import { SearchDataService } from './services/search-data/search-data.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    NgxAudioPlayerModule,
+    FontAwesomeModule
     // AgmCoreModule.forRoot({
     //   apiKey: 'AIzaSyDZyNdzl9Gc7QMi3zFZHv8xM766MPmPiQk'
     // })
   ],
   providers: [
     AuthService,
-    SearchDataService
+    SearchDataService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })

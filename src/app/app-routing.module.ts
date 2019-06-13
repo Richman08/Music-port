@@ -13,6 +13,7 @@ const routes: Routes = [
   {path: 'faq', component: FaqComponent},
   {path: 'login', component: LoginComponent},
   {path: 'user-profile', component: UserProfileComponent},
+  { path: '**', redirectTo: '/'}
 ];
 
 @NgModule({

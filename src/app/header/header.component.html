@@ -1,14 +1,16 @@
 
 <mat-toolbar class="container" >
   <div class="menu-btn-wraper">
-    <button mat-button routerLink="/main" class="header-menu-btn"> Main</button>
+    <button mat-button routerLink="/main" *ngIf='gAuth.user$ | async as user$' class="header-menu-btn"> Main</button>
     <button mat-button routerLink="/faq" class="header-menu-btn"> FAQ</button>
-    <button mat-button routerLink="/user-profile" class="header-menu-btn"> Profile</button>
+    <button mat-button routerLink="/user-profile" *ngIf='gAuth.user$ | async as user$' class="header-menu-btn"> Profile</button>
   </div>
-  <button mat-raised-button  routerLink="/login" class="login-btn">Login</button>
-  <!-- *ngIf='gAuth.user | async' -->
-  <button mat-raised-button *ngIf='gAuth.user | async as user' (click)='gAuth.logout()' class="login-btn">Logout</button>
+  <button mat-button *ngIf="gAuth.isActive == false" routerLink="/login" class="login-btn">Login</button>
+  <button mat-button *ngIf='gAuth.user$ | async as user$'  (click)='gAuth.logout()' class="login-btn">Logout</button>
   
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+<app-audio-player></app-audio-player>
+
+<!-- *ngIf="isLoggedIn$ | async as isLoggedIn" -->
+<!-- *ngIf="isLoggedIn$.source._value == false" -->

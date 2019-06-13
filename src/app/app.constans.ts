@@ -1,1 +1,1 @@
-export const GET_URL = 'https://itunes.apple.com/search'; 
+export const ITUNES_SEARCH_URL = 'https://itunes.apple.com/search'; 

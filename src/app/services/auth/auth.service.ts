@@ -8,27 +8,28 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  user: Observable<firebase.User>;
-  private loggedIn = new BehaviorSubject<boolean>(false);
-
+  user$: Observable<firebase.User>;
+  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isActive: boolean;
   get isLoggedIn() {
     return this.loggedIn.asObservable(); 
   }
 
   constructor(public gAuth: AngularFireAuth, private router: Router) {
-    this.user = gAuth.authState;
+    this.user$ = gAuth.authState;
    }
 
    loginWithGoole(){
-     const provider = new firebase.auth.GoogleAuthProvider();
-     this.gAuth.auth.signInWithPopup(provider)
+     const PROVIDER = new firebase.auth.GoogleAuthProvider();
+     this.gAuth.auth.signInWithPopup(PROVIDER)
      this.loggedIn.next(true);
-        // this.router.navigate(['/'])
+     this.isActive = true;
     }
     
     logout() {
       this.gAuth.auth.signOut();
       this.loggedIn.next(false);
       this.router.navigate(['/login']);
+      this.isActive = false;
    }
-}
+} 
