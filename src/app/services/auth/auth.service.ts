@@ -1,46 +1,52 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Observable, BehaviorSubject } from 'rxjs';
-import * as firebase from 'firebase/app';
+import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { auth } from 'firebase/app';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { switchMap } from 'rxjs/operators';
+import { User } from './user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  user$: Observable<firebase.User>;
-  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  get isLoggedIn() {
-    return this.loggedIn.asObservable(); 
+  user$: Observable<User>;
+  currentUser;
+  
+  constructor( private afAuth: AngularFireAuth, private router: Router, private afs: AngularFirestore) {
+    this.user$ = this.afAuth.authState.pipe(
+        switchMap(user => user ? this.afs.doc<User>(`users/${user.uid}`).valueChanges() : of(null)
+        )
+    )
   };
-  currentUser = firebase.auth().currentUser;
-  
-  
-  constructor( public aFAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase) {
-    this.user$ = aFAuth.authState;
-  }
 
-   loginWithGoogle(){
-     const PROVIDER = new firebase.auth.GoogleAuthProvider();
-     this.aFAuth.auth.signInWithPopup(PROVIDER)
-     this.loggedIn.next(true);
-     console.log('currentUser', firebase.auth().currentUser.uid)
-  }
+  async googleSignin() {
+    const provider = new auth.GoogleAuthProvider();
+    provider.setCustomParameters({
+      prompt: 'select_account'
+    });
+    const credential = await this.afAuth.auth.signInWithPopup(provider);
+    this.router.navigate(['/main'])
+    return this.updateUserData(credential.user)
+  };
 
-  setUserData() {
-    const DATA = {
-      name: "this.currentUser.displayName",
-    }
-    this.db.object('users/12').set(DATA)
-    .catch((err) => {
-      console.log(err)
-    })
+  async signOut() {
+    await this.afAuth.auth.signOut();
+    return this.router.navigate(['/login'])
+  };
+
+  private updateUserData({uid, email, displayName, photoURL}: User) {
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${uid}`);
+
+    const data = {
+      uid,
+      email,
+      displayName,
+      photoURL,
+      
+    };
+    console.log(data.photoURL)
+    return userRef.set(data, {merge: true});
   }
-  
-  logout() {
-    this.aFAuth.auth.signOut();
-    this.loggedIn.next(false);
-    this.router.navigate(['/login']);
-   }
 }  

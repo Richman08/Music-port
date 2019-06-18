@@ -14,7 +14,7 @@ export class AudioPlayerComponent implements OnInit {
 
   msbapDisplayTitle = false; 
 
-  constructor(private dataService: DataService, private gAuth: AuthService) { }
+  constructor(private dataService: DataService, private auth: AuthService) { }
 
   ngOnInit() {
     this.dataService.obsvTrackUrl.subscribe(result => {

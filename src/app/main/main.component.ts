@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
               public fb: FormBuilder,
               private searchDataService: SearchDataService,
               private dataService: DataService,
-              private gAuth: AuthService) {
+              private auth: AuthService) {
 
       this.searchForm = this.fb.group({
         searchField: ['']

@@ -28,6 +28,7 @@ import 'hammerjs';
 import { AuthService } from './services/auth/auth.service';
 import { SearchDataService } from './services/search-data/search-data.service';
 import { DataService } from './services/data-service/data.service';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { DataService } from './services/data-service/data.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFirestoreModule,
     NgxAudioPlayerModule,
     FontAwesomeModule
     // AgmCoreModule.forRoot({

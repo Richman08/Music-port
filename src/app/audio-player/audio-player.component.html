@@ -1,4 +1,4 @@
-<div *ngIf='gAuth.user$ | async as user$' class="wraper">
+<div *ngIf='auth.user$ | async as user' class="wraper">
     <mat-basic-audio-player
         [audioUrl]="msbapAudioUrl"
         [title]="msbapTitle"

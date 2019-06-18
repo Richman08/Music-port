@@ -6,7 +6,7 @@
         <input matInput  placeholder="Enter your first name" formControlName='userName' required>
       </mat-form-field>
       <mat-form-field class="input-field">
-        <input matInput placeholder="Enter your last name" formControlName='userLastName'>
+        <input matInput placeholder="Enter your last name" formControlName='userLastName' value="">
       </mat-form-field>
       <mat-form-field class="input-field">
         <input matInput  placeholder="Type to search country" formControlName='country'>
@@ -16,7 +16,7 @@
       </mat-form-field>
     </form>
     <div class="user-avatar-block">
-      <img src="../../assets/avatar/avatar.jpg" alt="user-avatar">
+      <img [src]="img" alt="user-avatar">
       <button class="choose-file-btn" (click)="fileInput.click()">
         <mat-icon>library_add</mat-icon>
         <span>Choose photo</span>

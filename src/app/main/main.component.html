@@ -1,4 +1,4 @@
-<div *ngIf='gAuth.user$ | async as user$' class="wraper">
+<div *ngIf='auth.user$ | async as user' class="wraper">
     <form [formGroup]="searchForm" class="form-group">
         <div class="search-container">
             <mat-form-field class="search-input">
@@ -26,4 +26,4 @@
             <mat-divider></mat-divider>
         </div>     
     </mat-list> 
-</div> 
+</div>  
