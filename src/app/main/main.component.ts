@@ -14,10 +14,11 @@ export class MainComponent implements OnInit {
   tracksArray: Array<any>;
   
   constructor(
-    public fb: FormBuilder,
-    private searchDataService: SearchDataService,
-    private dataService: DataService,
-    private gAuth: AuthService) {
+              public fb: FormBuilder,
+              private searchDataService: SearchDataService,
+              private dataService: DataService,
+              private gAuth: AuthService) {
+
       this.searchForm = this.fb.group({
         searchField: ['']
       })

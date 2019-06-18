@@ -7,9 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'main', pathMatch: 'full'},
+  {path: '', redirectTo: 'main', pathMatch: 'full', canActivate: [AuthGuard]},
   {path: 'main', component: MainComponent},
-  // , canActivate: [AuthGuard]
   {path: 'faq', component: FaqComponent},
   {path: 'login', component: LoginComponent},
   {path: 'user-profile', component: UserProfileComponent},
@@ -21,4 +20,4 @@ const routes: Routes = [
     RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { } 

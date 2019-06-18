@@ -1,19 +1,43 @@
 .wraper
-    max-width: 1350px
+    max-width: 700px
     padding: 10px 
-    
+    margin: 130px 0 0 0
+
 .user-profile-container
     display: flex
-    flex-direction: column
-    max-width: 400px
+    flex-wrap: wrap
+    justify-content: space-between
 
-    .input-field
-            width: 100%
-            // margin: 10px
-            // padding: 5px
     
+    .user-profile-form
+        display: flex
+        flex-direction: column
+        width: 100%
+        max-width: 400px
+        padding: 10px 
+
+        .input-field
+                width: 100%   
+                padding: 3px 
+
+    .user-avatar-block
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+        max-width: 220px
+        max-height: 220px
+        padding: 10px
+        margin: 25px 0 0 50px
+
+        img
+            width: 200px
+            height: 200px
+            overflow: inherit
+
+        .choose-file-btn
+            margin: 10px 0 0 0
     
 agm-map
     height: 400px
     max-width: 400px
-    margin: 15px 0 0 0  
+    margin: 15px 0 0 0    

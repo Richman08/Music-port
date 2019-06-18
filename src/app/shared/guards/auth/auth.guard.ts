@@ -8,25 +8,25 @@ import { take, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthGuard  {
-  // constructor(
-  //   private authService: AuthService,
-  //   private router: Router
-  // ) {}
+  constructor(
+    private gAuth: AuthService,
+    private router: Router
+  ) {}
 
-  // canActivate(
-  //   next: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot
-  // ): Observable<boolean> {
-  //   return this.authService.isLoggedIn        
-  //     .pipe(
-  //       take(1),                            
-  //       map((isLoggedIn: boolean) => {        
-  //         if (!isLoggedIn){
-  //           this.router.navigate(['/main']);  
-  //           return false;
-  //         }
-  //         return true;
-  //       })
-  //     )
-  // }
-}
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> {
+    return this.gAuth.isLoggedIn        
+      .pipe(
+        take(1),                            
+        map((isLoggedIn: boolean) => {        
+          if (!isLoggedIn){
+            this.router.navigate(['/login']);  
+            return false;
+          }
+          return true;
+        })
+      )
+  }
+} 

@@ -13,10 +13,10 @@ export class HeaderComponent implements OnInit {
   
   ngOnInit() {
     this.isLoggedIn$ = this.gAuth.isLoggedIn;
-    console.log(this.isLoggedIn$)
   }
- 
+  
   logout(){
     this.gAuth.logout();
   }
 }
+ 

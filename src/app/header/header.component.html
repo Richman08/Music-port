@@ -5,12 +5,14 @@
     <button mat-button routerLink="/faq" class="header-menu-btn"> FAQ</button>
     <button mat-button routerLink="/user-profile" *ngIf='gAuth.user$ | async as user$' class="header-menu-btn"> Profile</button>
   </div>
-  <button mat-button *ngIf="gAuth.isActive == false" routerLink="/login" class="login-btn">Login</button>
-  <button mat-button *ngIf='gAuth.user$ | async as user$'  (click)='gAuth.logout()' class="login-btn">Logout</button>
-  
+  <ng-template #login>
+    <button mat-button routerLink="/login" class="login-btn">Login</button>
+  </ng-template>
+  <!-- *ngIf="gAuth.isActive == false" -->
+  <button mat-button *ngIf="gAuth.user$ | async as user$; else login" (click)='gAuth.logout()' class="login-btn">Logout</button>
 </mat-toolbar>
 
 <app-audio-player></app-audio-player>
 
 <!-- *ngIf="isLoggedIn$ | async as isLoggedIn" -->
-<!-- *ngIf="isLoggedIn$.source._value == false" -->
+<!-- *ngIf="isLoggedIn$.source._value == false" --> 

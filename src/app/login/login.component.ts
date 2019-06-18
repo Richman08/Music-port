@@ -9,16 +9,16 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private gAuthService: AuthService, private router: Router) { }
+  constructor(private gAuth: AuthService, private router: Router) { }
 
   ngOnInit() {
+    console.log(this.gAuth)
   }
-
+  
   login() {
-    this.gAuthService.loginWithGoole();
-    // if() {
-        // this.router.navigate(['/main'])
-    // }
+    this.gAuth.loginWithGoogle();
+    this.gAuth.setUserData();
+    this.gAuth.user$ ? this.router.navigate(['/main']) : null;
   }
 }
  

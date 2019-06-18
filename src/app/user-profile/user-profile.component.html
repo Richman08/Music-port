@@ -1,19 +1,33 @@
  
 <div class="wraper">
-  <form [formGroup]="userProfile" class="user-profile-container">
-    <mat-form-field class="input-field">
-      <input matInput  placeholder="Enter your first name" formControlName='firstName'>
-    </mat-form-field>
-    <mat-form-field class="input-field">
-      <input matInput placeholder="Enter your last name" formControlName='lastName'>
-    </mat-form-field>
-    <mat-form-field class="input-field">
-      <input matInput  placeholder="Type to search country" formControlName='countryName'>
-    </mat-form-field>
-    <mat-form-field class="input-field">
-      <input matInput  placeholder="Type to search city" formControlName='cityName'>
-    </mat-form-field>
-  </form>
+  <div class="user-profile-container">
+    <form [formGroup]="userProfileForm" class="user-profile-form">
+      <mat-form-field class="input-field">
+        <input matInput  placeholder="Enter your first name" formControlName='userName' required>
+      </mat-form-field>
+      <mat-form-field class="input-field">
+        <input matInput placeholder="Enter your last name" formControlName='userLastName'>
+      </mat-form-field>
+      <mat-form-field class="input-field">
+        <input matInput  placeholder="Type to search country" formControlName='country'>
+      </mat-form-field>
+      <mat-form-field class="input-field">
+        <input matInput  placeholder="Type to search city" formControlName='city'>
+      </mat-form-field>
+    </form>
+    <div class="user-avatar-block">
+      <img src="../../assets/avatar/avatar.jpg" alt="user-avatar">
+      <button class="choose-file-btn" (click)="fileInput.click()">
+        <mat-icon>library_add</mat-icon>
+        <span>Choose photo</span>
+        <input #fileInput type="file" (change)="chooseUserAvatar($event)" style="display:none;" />
+      </button>
+      <button type="button" class="save-avatar" (click)="uploadAvatar()">Save</button>
+    </div>
+  
+    
+  
+  </div>
   <!-- google-place -->
   
   
@@ -21,7 +35,6 @@
     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
   </agm-map> -->
 
-<button mat-raised-button (click)="testClick()">Click me tender</button>
   
 </div>
- 
+  

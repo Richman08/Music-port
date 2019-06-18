@@ -25,6 +25,7 @@
     "@fortawesome/angular-fontawesome": "^0.4.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@google-cloud/storage": "^2.5.0",
     "angularfire2": "^5.2.1",
     "core-js": "^2.5.4",
     "firebase": "^6.1.1",
