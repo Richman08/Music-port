@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import { AuthService } from '../services/auth/auth.service';
+import { Observable } from 'rxjs';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 @Component({
@@ -12,9 +14,10 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class UserProfileComponent implements OnInit {
   userProfileForm: FormGroup;
-  selectedAvatar;
-  
-  constructor(private fb: FormBuilder, private auth: AuthService) { 
+  selectedAvatar: any = {};
+  user: any;
+
+  constructor(private fb: FormBuilder, private auth: AuthService, private afAuth: AngularFireAuth) { 
     this.userProfileForm = this.fb.group({
       userName: [''],
       userLastName: [''],
@@ -22,16 +25,18 @@ export class UserProfileComponent implements OnInit {
       city: ['']
     })
   };
- 
-  ngOnInit() {}
-
+  
+  ngOnInit() {
+    this.auth.user$.subscribe((res) => {
+      this.user = res;
+    })
+  }
+  
   chooseUserAvatar(event) {
     this.selectedAvatar = event.target.files[0];
     console.log(this.selectedAvatar)
   }
-
-img
-
+  
   uploadAvatar() {
     let storageRef = firebase.storage().ref('/userAvatar/' + this.selectedAvatar.name);
     let uploadTask = storageRef.put(this.selectedAvatar) 
@@ -41,16 +46,38 @@ img
       switch (snapshot.state) {
         case firebase.storage.TaskState.PAUSED:
           break;
-        case firebase.storage.TaskState.RUNNING: 
+          case firebase.storage.TaskState.RUNNING: 
           break;
-      }
-    }, err => console.log(err),
-     function() {
-      uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-        this.img = downloadURL;
-        console.log('File available at', downloadURL);
-        
+        }
+      }, err => console.log(err),
+      function() {
+        uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+          
       });
     });
   }
+
+  //   getDownloadURL() {
+  //     let storageRef = firebase.storage().ref().child("/userAvatar/");
+  //     storageRef.getDownloadURL().then(url => {
+  //       this.userAvatar = url;
+  //       console.log('url', url);
+  //       console.log('this.userAvatar', this.userAvatar);
+  //     });
+      
+
+
+    
+
+  //   from(storageRef.child(this.userAvatar).getDownloadURL())
+  //     .subscribe(downloadURL => {
+  //         this.userAvatar = downloadURL;
+  //       });
+  //   this.uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+
+  //   });
+    
+  // }
+  
+
 }  

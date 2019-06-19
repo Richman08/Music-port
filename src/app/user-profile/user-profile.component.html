@@ -16,7 +16,7 @@
       </mat-form-field>
     </form>
     <div class="user-avatar-block">
-      <img [src]="img" alt="user-avatar">
+      <img [src]="user?.photoURL" alt="user-avatar">
       <button class="choose-file-btn" (click)="fileInput.click()">
         <mat-icon>library_add</mat-icon>
         <span>Choose photo</span>
@@ -24,17 +24,6 @@
       </button>
       <button type="button" class="save-avatar" (click)="uploadAvatar()">Save</button>
     </div>
-  
-    
-  
   </div>
-  <!-- google-place -->
-  
-  
-  <!-- <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-  </agm-map> -->
-
-  
 </div>
   
