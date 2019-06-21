@@ -37,7 +37,7 @@ export class MainComponent implements OnInit {
 
   playTrack(index: number) {
       this.dataService.setTrackUrl(this.tracksArray[index].previewUrl);
-  }
+  } 
   
       
 

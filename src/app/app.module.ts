@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AudioPlayerComponent } from './audio-player/audio-player.component';
+import { SignupComponent } from './signup/signup.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,7 @@ import { AuthService } from './services/auth/auth.service';
 import { SearchDataService } from './services/search-data/search-data.service';
 import { DataService } from './services/data-service/data.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { UploadImgService } from './services/storage/upload-img.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     LoginComponent,
     GooglePlacesDirective,
     UserProfileComponent,
-    AudioPlayerComponent
+    AudioPlayerComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   providers: [
     AuthService,
     SearchDataService,
-    DataService
+    DataService,
+    UploadImgService
   ],
   bootstrap: [AppComponent]
 })

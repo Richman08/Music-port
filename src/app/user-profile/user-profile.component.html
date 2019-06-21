@@ -16,7 +16,7 @@
       </mat-form-field>
     </form>
     <div class="user-avatar-block">
-      <img [src]="user?.photoURL" alt="user-avatar">
+      <img [src]="currentUserAvatar" alt="user-avatar">
       <button class="choose-file-btn" (click)="fileInput.click()">
         <mat-icon>library_add</mat-icon>
         <span>Choose photo</span>

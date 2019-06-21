@@ -12,5 +12,5 @@ export class SearchDataService {
   search(data: any) {
     return this.http.get(ITUNES_SEARCH_URL + `?term=${data}&media=music&limit=10` )
   }
-}
+} 
  

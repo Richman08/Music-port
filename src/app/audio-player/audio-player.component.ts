@@ -21,6 +21,4 @@ export class AudioPlayerComponent implements OnInit {
       this.msbapAudioUrl = result
     });
     }
-
-
 }

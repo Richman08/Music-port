@@ -1,8 +1,11 @@
-<mat-card class="login-form-container">
+<mat-card class="signup-form-container">
   <form>
-    <h3>Please login to continue</h3>
+    <h3>Registration</h3>
 
-    <form [formGroup]="loginUserForm" class="login-user-form">
+    <form [formGroup]="signupUserForm" class="signup-user-form">
+      <mat-form-field class="input-field">
+        <input matInput type='text' placeholder="Enter your name" formControlName='name' required>
+      </mat-form-field>
       <mat-form-field class="input-field">
         <input matInput type='email' placeholder="Enter your email" formControlName='email' required>
       </mat-form-field>
@@ -10,7 +13,7 @@
         <input matInput type='password' placeholder="Enter your password" formControlName='password' required>
       </mat-form-field>
     </form>
-    <button mat-raised-button class="signin-btn" (click)='signin()'>Sign in</button>
+    <button mat-raised-button class="signup-btn" (click)='signup()'>Sign up</button>
     <!-- <button mat-raised-button class="signin-with-google-btn" (click)='auth.googleSignin()'>Login with Google</button> -->
   </form> 
 </mat-card>
