@@ -31,6 +31,7 @@ import { SearchDataService } from './services/search-data/search-data.service';
 import { DataService } from './services/data-service/data.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { UploadImgService } from './services/storage/upload-img.service';
+import { RegisterService } from './services/auth/register.service';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { UploadImgService } from './services/storage/upload-img.service';
     AuthService,
     SearchDataService,
     DataService,
-    UploadImgService
+    UploadImgService,
+    RegisterService
   ],
   bootstrap: [AppComponent]
 })

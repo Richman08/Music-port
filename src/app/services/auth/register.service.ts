@@ -10,6 +10,10 @@ export class RegisterService {
   constructor(private http: HttpClient) { }
 
   register(user) {
-    this.http.post(REPUTABLE_URL + '/auth/register', user)
+    this.http.post(REPUTABLE_URL + '/auth/register', user);
+  }
+
+  delete(id) {
+    return this.http.delete(REPUTABLE_URL + '/users/me');
   }
 }

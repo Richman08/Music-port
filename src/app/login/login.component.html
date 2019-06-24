@@ -1,16 +1,22 @@
 <mat-card class="login-form-container">
-  <form>
     <h3>Please login to continue</h3>
 
-    <form [formGroup]="loginUserForm" class="login-user-form">
+    <form [formGroup]="loginUserForm" (ngSubmit)="onSubmit()" class="login-user-form">
       <mat-form-field class="input-field">
         <input matInput type='email' placeholder="Enter your email" formControlName='email' required>
       </mat-form-field>
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+      </div>
       <mat-form-field class="input-field">
         <input matInput type='password' placeholder="Enter your password" formControlName='password' required>
       </mat-form-field>
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+      </div>
     </form>
-    <button mat-raised-button class="signin-btn" (click)='signin()'>Sign in</button>
+    <button mat-raised-button class="signin-btn" [disabled]="loading">Log in</button>
     <!-- <button mat-raised-button class="signin-with-google-btn" (click)='auth.googleSignin()'>Login with Google</button> -->
-  </form> 
+    <a routerLink="/signup" class="signup-link">Sign up</a> 
+
 </mat-card>
