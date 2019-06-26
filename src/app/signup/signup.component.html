@@ -1,17 +1,23 @@
 <mat-card class="signup-form-container">
     <h3>Registration</h3>
 
-    <form [formGroup]="signupUserForm" (ngSubmit)="onSubmit()" class="signup-user-form">
+    <form [formGroup]="signupUserForm" (ngSubmit)="onSubmit(signupUserForm.value)" class="signup-user-form">
       <mat-form-field class="input-field">
-        <input matInput type='text' placeholder="Enter your name" formControlName='name' required>
+        <input matInput type='text' placeholder="Enter your name" formControlName="first_name" required>
       </mat-form-field>
       <mat-form-field class="input-field">
-        <input matInput type='email' placeholder="Enter your email" formControlName='email' required>
+        <input matInput type='text' placeholder="Enter your gender" formControlName="gender" required>
       </mat-form-field>
       <mat-form-field class="input-field">
-        <input matInput type='password' placeholder="Enter your password" formControlName='password' required>
+        <input matInput type='text' placeholder="Enter your birth" formControlName="birth" required>
       </mat-form-field>
+      <mat-form-field class="input-field">
+        <input matInput type='email' placeholder="Enter your email" formControlName="email" required>
+      </mat-form-field>
+      <mat-form-field class="input-field">
+        <input matInput type='password' placeholder="Enter your password" formControlName="password" required>
+      </mat-form-field>
+      <button mat-raised-button class="signup-btn">Sign up</button>
     </form>
-    <button mat-raised-button class="signup-btn" (click)='signup()'>Sign up</button>
     <!-- <button mat-raised-button class="signin-with-google-btn" (click)='auth.googleSignin()'>Login with Google</button> -->
 </mat-card>  

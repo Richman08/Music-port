@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
@@ -19,7 +19,6 @@ import { MaterialModule } from './shared/modules/material.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AgmCoreModule } from '@agm/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
@@ -31,7 +30,7 @@ import { SearchDataService } from './services/search-data/search-data.service';
 import { DataService } from './services/data-service/data.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { UploadImgService } from './services/storage/upload-img.service';
-import { RegisterService } from './services/auth/register.service';
+import { HeadersService } from './services/headers/headers.service';
 
 @NgModule({
   declarations: [
@@ -69,7 +68,7 @@ import { RegisterService } from './services/auth/register.service';
     SearchDataService,
     DataService,
     UploadImgService,
-    RegisterService
+    HeadersService
   ],
   bootstrap: [AppComponent]
 })

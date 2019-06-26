@@ -1,2 +1,2 @@
-export const ITUNES_SEARCH_URL = 'https://itunes.apple.com/search'; 
-export const REPUTABLE_URL = 'http://api.reputable.site/v1'; 
+export const ITUNES_SEARCH_URL = 'https://itunes.apple.com/search';
+export const API_URL = 'https://api.reputable.site/v1';

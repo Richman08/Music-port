@@ -1,15 +1,15 @@
 
 <mat-toolbar class="container" >
   <div class="menu-btn-wraper">
-    <button mat-button routerLink="/main" *ngIf='auth.user$ | async as user' class="header-menu-btn"> Main</button>
+    <button mat-button *ngIf="isAuth()" routerLink="/main" class="header-menu-btn"> Main</button>
     <button mat-button routerLink="/faq" class="header-menu-btn"> FAQ</button>
-    <button mat-button routerLink="/user-profile" *ngIf='auth.user$ | async as user' class="header-menu-btn"> Profile</button>
+    <button mat-button *ngIf="isAuth()" routerLink="/user-profile"  class="header-menu-btn"> Profile</button>
   </div>
-  <ng-template #login>
-    <button mat-button routerLink="/login" class="login-btn">Login</button>
+  <ng-template >
+    <button mat-button  routerLink="/login" *ngIf="!isAuth()" class="login-btn">Login</button>
   </ng-template>
-  <div *ngIf="auth.user$ | async as user; else login">
-    <button mat-button (click)='auth.signOut()' class="signout-btn">Log Out</button>
+  <div *ngIf="isAuth()">
+    <button mat-button (click)="logout(user)" class="signout-btn">Log Out</button>
   </div>
 </mat-toolbar>
 
