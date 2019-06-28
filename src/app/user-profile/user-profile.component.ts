@@ -4,7 +4,7 @@ import { AuthService } from '../services/auth/auth.service';
 import { Observable } from 'rxjs';
 import { UploadImgService } from '../services/storage/upload-img.service';
 import { HttpClient } from '@angular/common/http';
-import { REPUTABLE_URL } from '../app.constans';
+import { API_URL } from '../app.constans';
 
 
 

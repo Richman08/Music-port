@@ -17,6 +17,10 @@ export class AuthService {
     // )
   }
 
+  isAuth() {
+    return localStorage.getItem('REPUTABLE');
+  }
+
   register(user) {
     return this.http.post(API_URL + '/auth/register', user, this.headers.setHeaders(false));
   }

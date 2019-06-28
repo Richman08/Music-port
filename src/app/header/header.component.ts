@@ -13,9 +13,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-  isAuth() {
-    return localStorage.getItem('REPUTABLE');
-  }
 
   logout() {
     this.auth.logout().subscribe(resp => {

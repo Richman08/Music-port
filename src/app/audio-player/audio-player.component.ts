@@ -18,7 +18,7 @@ export class AudioPlayerComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.obsvTrackUrl.subscribe(result => {
-      this.msbapAudioUrl = result
+      this.msbapAudioUrl = result;
     });
     }
 }
